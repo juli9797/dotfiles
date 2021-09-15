@@ -192,6 +192,11 @@ for monitor in $(hc list_monitors | cut -d: -f1) ; do
     "$panel" "$monitor" &
 done
 
+# Center SPLASH DIALOG UTILITY rule
+herbstclient rule windowtype=_NET_WM_WINDOW_TYPE_DIALOG floatplacement=center
+herbstclient rule windowtype=_NET_WM_WINDOW_TYPE_SPLASH floatplacement=center
+herbstclient rule windowtype=_NET_WM_WINDOW_TYPE_UTILITY floatplacement=center
+
 # Rofi
 hc keybind $Mod-space spawn rofi -show run
 hc keybind $Mod-w spawn rofi -show window 
@@ -215,8 +220,11 @@ hc keybind XF86MonBrightnessDown spawn xbacklight -dec 20 # decrease screen brig
 # Networkmanager
 hc keybind $Mod-n spawn networkmanager_dmenu 
 
+# Lock
+hc keybind $Mod-m spawn ${BASE}/scripts/suspend.sh
+
 # Suspend
-hc keybind $Mod-Shift-s spawn systemctl suspend
+hc keybind $Mod-Shift-s spawn ${BASE}/scripts/suspend.sh suspend
 
 # Screenshot 
 hc keybind  $Mod-c spawn ${BASE}/scripts/screenshot.sh
@@ -224,9 +232,7 @@ hc keybind  $Mod-c spawn ${BASE}/scripts/screenshot.sh
 # Bluetooth
 hc keybind  $Mod-b spawn ${BASE}/scripts/bluetooth.sh
 
-
-
+#Polybar
 killall -q polybar
-polybar minimal&
-
+polybar minimal& #we don't need logs
 
