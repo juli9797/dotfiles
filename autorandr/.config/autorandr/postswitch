@@ -1,0 +1,3 @@
+#!/bin/bash
+# tell herbstluftwm to look for new monitors
+herbstclient detect_monitors
