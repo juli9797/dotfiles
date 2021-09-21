@@ -1,6 +1,5 @@
 #!/bin/bash
-
-i3lock -t -i Pictures/wallpaper_moon.png
+i3lock -t -i /usr/share/backgrounds/wallpaper_moon.png
 case $1 in
     suspend)
         systemctl suspend
@@ -10,6 +9,7 @@ case $1 in
         ;;
     *)
         #lock
+        
         ;;
 esac
 

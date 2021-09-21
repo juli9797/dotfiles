@@ -1,3 +1,9 @@
 #!/bin/bash
 # tell herbstluftwm to look for new monitors
 herbstclient detect_monitors
+
+# Background
+nitrogen --head=1 --set-auto /home/jln/Pictures/wallpaper_moon.jpg
+nitrogen --head=0 --set-auto /home/jln/Pictures/wallpaper_moon.jpg
+
+

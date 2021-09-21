@@ -175,14 +175,8 @@ hc set tree_style '╾│ ├└╼─┐'
 # unlock, just to be sure
 hc unlock
 
-#xrandr and Monitor stuff
-autorandr -c
-hc detect_monitors
-
-# Background
-nitrogen --head=1 --set-auto /home/jln/Pictures/wallpaper_moon.jpg
-nitrogen --head=0 --set-auto /home/jln/Pictures/wallpaper_moon.jpg
-
+#xrandr (wallpaper in autorandr postscript)
+autorandr -c --force
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
