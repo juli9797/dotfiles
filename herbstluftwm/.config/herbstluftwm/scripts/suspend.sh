@@ -4,12 +4,17 @@ case $1 in
     suspend)
         systemctl suspend
         ;;
+    hybrid-sleep)
+        systemctl hybrid-sleep
+        ;;
     hibernate)
-        systemctl hibernate 
+        systemctl hibernate
+        ;;
+    poweroff)
+        systemctl -i poweroff
         ;;
     *)
         #lock
-        
         ;;
 esac
 

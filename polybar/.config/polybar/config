@@ -39,7 +39,7 @@ font-2 = siji:pixelsize=18;1
 
 modules-left = mpd 
 modules-center = time date 
-modules-right = battery
+modules-right = powernow remainingTime wlan battery
 
 #tray-position = right
 #tray-padding = 2
@@ -127,4 +127,20 @@ pseudo-transparency = true
 margin-top = 2
 margin-bottom = 2
 
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+label-connected = "An"
+label-disconnected = "Aus"
 ; vim:ft=dosini
+
+[module/powernow]
+type = custom/script
+exec = ~/.config/polybar/scripts/powernow.sh
+interval = 10
+
+[module/remainingTime]
+type = custom/script
+exec = ~/.config/polybar/scripts/remainingTime.sh
+interval = 10
+

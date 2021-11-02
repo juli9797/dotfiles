@@ -1,12 +1,12 @@
 [global]
 monitor = 0
 follow = mouse
-geometry = "300x60-20+48"
+geometry = "350-20+48"
 indicate_hidden = yes
 shrink = no
 separator_height = 0
-padding = 32
-horizontal_padding = 32
+padding = 20
+horizontal_padding = 20
 frame_width = 2
 sort = no
 idle_threshold = 120
@@ -21,7 +21,12 @@ ignore_newline = no
 stack_duplicates = false
 hide_duplicate_count = yes
 show_indicators = no
-icon_position = off
+# icons
+icon_position = left
+min_icon_size = 30
+max_icon_size = 60
+
+
 sticky_history = yes
 history_length = 20
 browser = /usr/bin/google-chrome-stable 

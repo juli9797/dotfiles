@@ -214,11 +214,11 @@ hc keybind XF86MonBrightnessDown spawn xbacklight -dec 20 # decrease screen brig
 # Networkmanager
 hc keybind $Mod-n spawn networkmanager_dmenu 
 
-# Lock
+# Suspend 
 hc keybind $Mod-m spawn ${BASE}/scripts/suspend.sh
 
-# Suspend
-hc keybind $Mod-Shift-s spawn ${BASE}/scripts/suspend.sh suspend
+# Shutdown Menu 
+hc keybind $Mod-x spawn ${BASE}/scripts/sleepMenu.sh
 
 # Screenshot 
 hc keybind  $Mod-c spawn ${BASE}/scripts/screenshot.sh

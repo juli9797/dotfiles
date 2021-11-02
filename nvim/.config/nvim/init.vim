@@ -10,7 +10,7 @@ set nowrap
 set smartcase
 set incsearch
 set backspace=indent,eol,start
-set updatetime=300
+set updatetime=400
 set cmdheight=2
 set noswapfile
 set nobackup
@@ -46,8 +46,8 @@ Plugin 'neoclide/coc.nvim'
 Plugin 'https://github.com/sirtaj/vim-openscad'
 Plugin 'lervag/vimtex'
 Plugin 'honza/vim-snippets'
-Plugin 'nvim-telescope/telescope.nvim'
-Plugin 'nvim-lua/plenary.nvim'
+"Plugin 'nvim-telescope/telescope.nvim'
+"Plugin 'nvim-lua/plenary.nvim'
 Plugin 'mbbill/undotree'
 
 call vundle#end()            " required
