@@ -54,4 +54,7 @@ esac
 
 }
 
+# ensure power is on
+bluetoothctl power on
+# launch menu
 launcher
