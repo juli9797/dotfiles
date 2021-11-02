@@ -19,4 +19,8 @@ Clone this Repo into `~/`
 [jln:~/dotfiles]$ stow -D polybar
 ```
 
+**Scripts**
 
+There are two script collections:
+* [window manager](./herbstluftwm/.config/herbstluftwm/scripts) mostly dmenu scripts
+* [statusbar](.polybar/.config/polybar/scripts) power usage, remaining battery estimation ... 
