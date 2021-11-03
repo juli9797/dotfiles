@@ -1,6 +1,6 @@
 syntax on
 set ruler
-set noerrorbells 
+set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -10,13 +10,14 @@ set nowrap
 set smartcase
 set incsearch
 set backspace=indent,eol,start
-set updatetime=400
+set updatetime=1000
 set cmdheight=2
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set signcolumn=yes
+set nocompatible "only needed in some rare cases (vim is in nocompatible mode as soon as the vimrc is loaded)
 
 highlight LineNr ctermfg=11
 
@@ -27,27 +28,31 @@ nnoremap <C-l> :tabnext<CR>
 map <f9> :w <CR> :make!<CR>
 
 "----Spell checking--
-setlocal spelllang=de
-autocmd FileType markdown setlocal spell
+nnoremap <f2> :call ToggleSpell()<CR>
+setlocal spelllang=de,en
 
+function ToggleSpell()
+    if &spell
+        setlocal nospell
+    else
+        setlocal spell
+    endif
+endfunction
 
+autocmd FileType markdown setlocal spell "spell is activated by default for markdown documents
 
 "VUNDLE PLUGIN
-set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
-Plugin 'chrisbra/Colorizer'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'vimwiki/vimwiki'
 Plugin 'neoclide/coc.nvim'
 Plugin 'https://github.com/sirtaj/vim-openscad'
 Plugin 'lervag/vimtex'
 Plugin 'honza/vim-snippets'
-"Plugin 'nvim-telescope/telescope.nvim'
-"Plugin 'nvim-lua/plenary.nvim'
 Plugin 'mbbill/undotree'
 
 call vundle#end()            " required
@@ -55,14 +60,6 @@ filetype plugin indent on    " required
 
 "----UndoTree-----
 nnoremap <F5> :UndotreeToggle<CR>
-"----Telescope----
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-"----Colorizer----
-autocmd VimEnter * ColorHighlight
 
 "----vimwiki----
 let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown', 'ext': '.wiki'}]
@@ -80,14 +77,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "----COC----
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 let g:coc_snippet_next = '<tab>'
