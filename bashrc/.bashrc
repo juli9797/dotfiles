@@ -23,7 +23,7 @@ alias addbk='~/.scripts/bookmark.sh'
 alias delbk='~/.scripts/delbookmark.sh'
 #fzf
 alias img='imv $(ls *.jpg *.JPG *.png *.PNG 2> /dev/null| fzf)'
-alias pdf='zathura $(ls *.pdf | fzf)'
+alias pdf='find *.pdf | fzf |xargs -i zathura --fork "{}"'
 alias fd='cd $(find -type d | fzf)&&ls'
 #clipboard
 alias c='xclip -selection clipboard'
