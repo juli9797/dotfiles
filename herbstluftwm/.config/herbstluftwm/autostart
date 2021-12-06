@@ -231,7 +231,7 @@ killall -q polybar
 polybar minimal& #we don't need logs
 
 # Autolock / lock after 10 min, blank screen 500 sec earlier, hibernate after 30mins
-xautolock -detectsleep \
-          -notify  480 -notifier "xset dpms force off" \
-          -time     10 -locker   "${BASE}/scripts/suspend.sh" \
-          -killtime 30 -killer   "${BASE}/scripts/suspend.sh hibernate" &
+#xautolock -detectsleep \
+#          -notify  480 -notifier "xset dpms force off" \
+#          -time     10 -locker   "${BASE}/scripts/suspend.sh" \
+#          -killtime 30 -killer   "${BASE}/scripts/suspend.sh hibernate" &
