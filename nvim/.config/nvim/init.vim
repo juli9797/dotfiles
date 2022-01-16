@@ -29,7 +29,7 @@ map <f9> :w <CR> :make!<CR>
 
 "----Spell checking--
 nnoremap <f2> :call ToggleSpell()<CR>
-setlocal spelllang=de,en
+set spelllang=de,en
 
 function ToggleSpell()
     if &spell
@@ -54,6 +54,7 @@ Plugin 'https://github.com/sirtaj/vim-openscad'
 Plugin 'lervag/vimtex'
 Plugin 'honza/vim-snippets'
 Plugin 'mbbill/undotree'
+Plugin 'dhruvasagar/vim-table-mode'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -108,4 +109,20 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 nmap <silent> gd <Plug>(coc-definition)
 
 
-
+" Emoji shortcuts
+ab :white_check_mark: ✅ 
+ab :warning: ⚠ 
+ab :bulb: 💡
+ab :pushpin: 📌
+ab :bomb: 💣
+ab :pill: 💊
+ab :construction: 🚧
+ab :pencil: 📝
+ab :point_right: 👉 
+ab :book: 📖 
+ab :link: 🔗 
+ab :wrench: 🔧 
+ab :info: 🛈
+ab :telephone: 📞
+ab :email: 📧
+ab :computer: 💻

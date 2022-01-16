@@ -226,6 +226,9 @@ hc keybind  $Mod-c spawn ${BASE}/scripts/screenshot.sh
 # Bluetooth
 hc keybind  $Mod-b spawn ${BASE}/scripts/bluetooth.sh
 
+# VNC
+hc keybind $Mod-v spawn ~/bin/vnc 
+
 # Polybar
 killall -q polybar
 polybar minimal& #we don't need logs
