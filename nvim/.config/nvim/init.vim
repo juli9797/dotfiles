@@ -13,7 +13,7 @@ set backspace=indent,eol,start
 set updatetime=1000
 set cmdheight=2
 set noswapfile
-set nobackup
+"set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set signcolumn=yes
@@ -44,20 +44,30 @@ autocmd FileType markdown setlocal spell "spell is activated by default for mark
 "VUNDLE PLUGIN
 filetype off                  " required
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'vimwiki/vimwiki'
-Plugin 'neoclide/coc.nvim', {'pinned': 1} 
+Plugin 'neoclide/coc.nvim', {'pinned': 1}
 Plugin 'https://github.com/sirtaj/vim-openscad'
 Plugin 'lervag/vimtex'
 Plugin 'honza/vim-snippets'
 Plugin 'mbbill/undotree'
 Plugin 'dhruvasagar/vim-table-mode'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'chrisbra/csv.vim'
+"Plugin 'tranvansang/octave.vim'
+Plugin 'vim-scripts/taglist.vim'
 call vundle#end()            " required
+
 filetype plugin indent on    " required
+
+
+"vim-airline
+let g:airline_theme='bubblegum'
 
 "----UndoTree-----
 nnoremap <F5> :UndotreeToggle<CR>
@@ -110,19 +120,50 @@ nmap <silent> gd <Plug>(coc-definition)
 
 
 " Emoji shortcuts
-ab :white_check_mark: ✅ 
-ab :warning: ⚠ 
+ab :white_check_mark: ✅
+ab :warning: ⚠
 ab :bulb: 💡
 ab :pushpin: 📌
 ab :bomb: 💣
 ab :pill: 💊
 ab :construction: 🚧
 ab :pencil: 📝
-ab :point_right: 👉 
-ab :book: 📖 
-ab :link: 🔗 
-ab :wrench: 🔧 
+ab :point_right: 👉
+ab :book: 📖
+ab :link: 🔗
+ab :wrench: 🔧
 ab :info: 🛈
 ab :telephone: 📞
 ab :email: 📧
 ab :computer: 💻
+
+" let g:vimtex_compiler_latexmk_engines['_']  = '-lualatex'
+
+"let g:vimtex_compiler_latexmk_engines = {
+"            \ '_'                : '-lualatex',
+"            \ 'pdfdvi'           : '-pdfdvi',
+"            \ 'pdfps'            : '-pdfps',
+"            \ 'pdflatex'         : '-pdf',
+"            \ 'luatex'           : '-lualatex',
+"            \ 'lualatex'         : '-lualatex',
+"            \ 'xelatex'          : '-xelatex',
+"            \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+"            \ 'context (luatex)' : '-pdf -pdflatex=context',
+"            \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+"            \}
+let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : '',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \   '--shell-escape',
+        \ ],
+        \}
+
+"lua require('leap').add_default_mappings()

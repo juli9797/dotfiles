@@ -232,7 +232,10 @@ hc keybind $Mod-v spawn ~/bin/vnc
 # Polybar
 killall -q polybar
 polybar minimal& #we don't need logs
-
+killall -q easyeffects
+easyeffects --gapplication-service
+killall -q picom
+picom
 # Autolock / lock after 10 min, blank screen 500 sec earlier, hibernate after 30mins
 #xautolock -detectsleep \
 #          -notify  480 -notifier "xset dpms force off" \

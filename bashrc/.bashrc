@@ -32,6 +32,9 @@ alias v='xclip -selection clipboard -o'
 #additional folders in path
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/bin
+export PATH=$PATH:~/Documents/masterarbeit/python
+
+export PYTHONPATH=$PYTHONPATH:~/.lib/python:~/Documents/masterarbeit/python
 
 #PS1 stuff
 

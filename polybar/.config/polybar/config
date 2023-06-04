@@ -10,13 +10,14 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/minimal]
-;monitor = ${env:MONITOR:HDMI-1}
+;monitor = LVDS1
 width = 100%
 height = 25
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 3.0
 fixed-center = true 
+enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -37,9 +38,9 @@ font-0 = Courier New:pixelsize=11;1
 font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
 font-2 = siji:pixelsize=18;1
 
-modules-left = mpd 
+modules-left = herbstluft mpd 
 modules-center = time date 
-modules-right = powernow remainingTime wlan battery
+modules-right = easyeffects-presets easyeffects-presets-ipc powernow remainingTime wlan battery
 
 #tray-position = right
 #tray-padding = 2
@@ -144,3 +145,72 @@ type = custom/script
 exec = ~/.config/polybar/scripts/remainingTime.sh
 interval = 10
 
+[module/herbstluft]
+type = custom/script
+exec = ~/.config/polybar/scripts/herbstluftwm.sh
+interval = 1
+
+
+[module/easyeffects-presets]
+type = custom/script
+exec = polybar-msg hook easyeffects-presets-ipc 1 &>/dev/null
+# You may want to tweak this for faster updates from EasyEffects
+interval = 60
+
+# Uses IPC to update the output on click
+[module/easyeffects-presets-ipc]
+type = custom/ipc
+hook-0 = easyeffects-presets --format '$PRESET [$POSITION/$TOTAL]' show
+# The command shouldn't be ran once for each bar, so `next` and `reset` are
+# executed here and then the output is updated via IPC.
+click-left   = easyeffects-presets prev  && polybar-msg hook easyeffects-presets-ipc 1
+click-right  = easyeffects-presets next  && polybar-msg hook easyeffects-presets-ipc 1
+click-middle = easyeffects-presets reset && polybar-msg hook easyeffects-presets-ipc 1
+
+[module/ewmh]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+
+;extra icons to choose from
+;http://fontawesome.io/cheatsheet/
+;       v     
+
+icon-0 = 1;1
+icon-1 = 2;2
+icon-2 = 3;3
+icon-3 = 4;4
+icon-4 = 5;5
+icon-5 = 6;6
+icon-6 = 7;7
+icon-7 = 8;8
+icon-8 = 9;9
+icon-default = 
+format = <label-state>
+label-monitor = %name%
+
+label-active = [ %icon% ]
+label-active-foreground = ${colors.foreground-alt}
+label-active-background = ${colors.background}
+label-active-padding = 0
+label-active-font = 5
+
+label-occupied = *%icon%* 
+label-occupied-foreground = ${colors.foreground-alt2}
+label-occupied-background = ${colors.background}
+label-occupied-padding = 0
+;label-occupied-font = 5
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.foreground}
+label-urgent-padding = 0
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt1}
+label-empty-background = ${colors.background}
+label-empty-padding = 0
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
